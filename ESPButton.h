@@ -22,6 +22,7 @@
 #include <Arduino.h>
 #include <functional>
 #include <Ticker.h>
+#include "."
 
 #define ESPBUTTON_DEBUG(message, ...)  //printf_P(PSTR("[%7d] ESPButton: " message "\n"), millis(), ##__VA_ARGS__)
 
