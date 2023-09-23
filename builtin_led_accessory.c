@@ -114,3 +114,9 @@ void accessory_init() {
     esp_wifi_get_mac(WIFI_IF_STA, mac);
     sprintf(ACCESSORY_NAME, "ESP32_LED_%02X%02X%02X", mac[3], mac[4], mac[5]);
 }
+
+
+void testfunc(){
+  printf("\n run test func");
+  //sdfg
+}

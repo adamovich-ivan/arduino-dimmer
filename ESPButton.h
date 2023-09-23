@@ -13,10 +13,7 @@
  * ESPButton.begin(); // вызовите begin для начала сканирования.
  * в loop():
  * ESPButton.loop(); // будет уведомлять о событии в loop (не в прерывании таймера)
- *
- *  Создано:     2020-03-08
- *  Обновлено:   2020-04-14
- *      Автор:   Wang Bin
+
  */
 
 #ifndef ESPBUTTON_H_
@@ -25,6 +22,7 @@
 #include <Arduino.h>
 #include <functional>
 #include <Ticker.h>
+#include "."
 
 #define ESPBUTTON_DEBUG(message, ...)  //printf_P(PSTR("[%7d] ESPButton: " message "\n"), millis(), ##__VA_ARGS__)
 
@@ -88,11 +86,11 @@ public:
 
 	void begin() {
 		ticker.detach();
-#if defined(ESP8266)
+    #if defined(ESP8266)
 		ticker.attach_ms(16, std::bind(&ESPButtonClass::tick, this));
-#elif defined(ESP32)
+    #elif defined(ESP32)
 		ticker.attach_ms(16, _esp32_ticker_cb, this);
-#endif
+    #endif
 	}
 
 	ESPButtonEntry* add(uint8_t _id, uint8_t _pin, uint8_t _pin_down_digital,
